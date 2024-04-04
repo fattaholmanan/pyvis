@@ -69,6 +69,7 @@ class Network(object):
         """
         self.nodes = []
         self.edges = []
+        self.edges_lookup = {}
         self.height = height
         self.width = width
         self.heading = heading
@@ -311,7 +312,7 @@ class Network(object):
         """
         return len(self.edges)
 
-    def add_edge(self, source, to, check_duplicates=True, **options):
+    def add_edge(self, source, to, **options):
         """
 
         Adding edges is done based off of the IDs of the nodes. Order does
@@ -370,20 +371,15 @@ class Network(object):
             "non existent node '" + str(to) + "'"
 
         # we only check existing edge for undirected graphs
-        if not self.directed and check_duplicates:
-            for e in self.edges:
-                frm = e['from']
-                dest = e['to']
-                if (
-                        (source == dest and to == frm) or
-                        (source == frm and to == dest)
-                ):
-                    # edge already exists
-                    edge_exists = True
+        key = (source, to)
+        if not self.directed:
+            if key in self.edges_lookup or key[::-1] in self.edges_lookup:
+                edge_exists = True
 
         if not edge_exists:
             e = Edge(source, to, self.directed, **options)
             self.edges.append(e.options)
+            self.edges_lookup[key] = e
 
     def add_edges(self, edges):
         """
