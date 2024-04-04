@@ -400,6 +400,9 @@ class Network(object):
             else:
                 self.add_edge(edge[0], edge[1])
 
+    def get_edge(self, source, to):
+        return self.edges_lookup((source, to))
+
     def get_network_data(self):
         """
         Extract relevant information about this network in order to inject into
