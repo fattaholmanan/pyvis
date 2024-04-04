@@ -11,7 +11,7 @@ Pyvis' full documentation can be found at http://pyvis.readthedocs.io/en/latest/
 You can install pyvis through pip:
 
 ```bash
-pip install pyvis
+pip install fattaholmanan-pyvis
 ```
 Or if you have an archive of the project simply run the following from the top level directory:
 
