@@ -380,6 +380,8 @@ class Network(object):
             e = Edge(source, to, self.directed, **options)
             self.edges.append(e.options)
             self.edges_lookup[key] = e
+            return True
+        return False
 
     def add_edges(self, edges):
         """
