@@ -401,7 +401,7 @@ class Network(object):
                 self.add_edge(edge[0], edge[1])
 
     def get_edge(self, source, to):
-        return self.edges_lookup((source, to))
+        return self.edges_lookup[(source, to)]
 
     def get_network_data(self):
         """
