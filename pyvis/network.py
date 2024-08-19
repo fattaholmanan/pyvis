@@ -524,19 +524,6 @@ class Network(object):
             with open(name, "w+") as out:
                 out.write(self.html)
             return IFrame(name, width=self.width, height=self.height)
-        else:
-            if local:
-                tempdir = "."
-            else:
-                tempdir = tempfile.mkdtemp()
-            # with tempfile.mkdtemp() as tempdir:
-            if os.path.exists(f"{tempdir}/lib"):
-                shutil.rmtree(f"{tempdir}/lib")
-            shutil.copytree(f"{os.path.dirname(__file__)}/templates/lib", f"{tempdir}/lib")
-
-            with open(f"{tempdir}/{name}", "w+") as out:
-                out.write(self.html)
-                webbrowser.open(f"{tempdir}/{name}")
 
     def show(self, name, local=True):
         """
