@@ -350,7 +350,7 @@
                               for (let each in allEdges) {
                                   if (allEdges.hasOwnProperty(each)) {
                                       for (let eachProp in allEdges[each]) {
-                                          if (allEdges[each].hasOwnProperty(eachProp)) {
+                                          if (allEdges[each].hasOwnProperty(eachProp) && eachProp == "label") {
                                               propControl.addOption({id: eachProp, title: eachProp})
                                           }
                                       }
@@ -361,11 +361,11 @@
                               for (let each in allNodes) {
                                   if (allNodes.hasOwnProperty(each)) {
                                       for (let eachProp in allNodes[each]) {
-                                          if (allNodes[each].hasOwnProperty(eachProp)
-                                              && (eachProp !== 'hidden' && eachProp !== 'savedLabel'
-                                                  && eachProp !== 'hiddenLabel')) {
+                                        if (
+                                            allNodes[each].hasOwnProperty(eachProp) && 
+                                            (eachProp !== 'hidden' && eachProp !== 'savedLabel' && eachProp !== 'hiddenLabel' && eachProp == "label")
+                                        ) {
                                               propControl.addOption({id: eachProp, title: eachProp})
-
                                           }
                                       }
                                   }
